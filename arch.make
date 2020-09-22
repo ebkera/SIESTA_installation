@@ -65,13 +65,22 @@ FPPFLAGS += -DSIESTA__FLOOK
 # COMP_LIBS += libncdf.a libfdict.a
 # FPPFLAGS += -DCDF -DNCDF -DNCDF_4
 
-INCFLAGS += -I$(INSDIR)/siesta/siesta-4.1-b3/Docs/build/netcdf/4.4.1.1/include
-LDFLAGS += -L$(INSDIR)/siesta/siesta-4.1-b3/Docs/build/zlib/1.2.11/lib -Wl,-rpath=$(INSDIR)/siesta/siesta-4.1-b3/Docs/build/zlib/1.2.11/lib
-LDFLAGS += -L$(INSDIR)/siesta/siesta-4.1-b3/Docs/build/hdf5/1.8.18/lib -Wl,-rpath=$(INSDIR)/siesta/siesta-4.1-b3/Docs/build/hdf5/1.8.18/lib
-LDFLAGS += -L$(INSDIR)/siesta/siesta-4.1-b3/Docs/build/netcdf/4.4.1.1/lib -Wl,-rpath=$(INSDIR)/siesta/siesta-4.1-b3/Docs/build/netcdf/4.4.1.1/lib
+# netcdf
+INCFLAGS += -I/opt/siesta/siesta-master/Docs/build/netcdf/4.7.4/include
+LDFLAGS += -L/opt/siesta/siesta-master/Docs/build/zlib/1.2.11/lib -Wl,-rpath=/opt/siesta/siesta-master/Docs/build/zlib/1.2.11/lib
+LDFLAGS += -L/opt/siesta/siesta-master/Docs/build/hdf5/1.12.0/lib -Wl,-rpath=/opt/siesta/siesta-master/Docs/build/hdf5/1.12.0/lib
+LDFLAGS += -L/opt/siesta/siesta-master/Docs/build/netcdf/4.7.4/lib -Wl,-rpath=/opt/siesta/siesta-master/Docs/build/netcdf/4.7.4/lib
 LIBS += -lnetcdff -lnetcdf -lhdf5_hl -lhdf5 -lz
 COMP_LIBS += libncdf.a libfdict.a
 FPPFLAGS += -DCDF -DNCDF -DNCDF_4
+
+#INCFLAGS += -I$(INSDIR)/siesta/siesta-4.1-b3/Docs/build/netcdf/4.4.1.1/include
+#LDFLAGS += -L$(INSDIR)/siesta/siesta-4.1-b3/Docs/build/zlib/1.2.11/lib -Wl,-rpath=$(INSDIR)/siesta/siesta-4.1-b3/Docs/build/zlib/1.2.11/lib
+#LDFLAGS += -L$(INSDIR)/siesta/siesta-4.1-b3/Docs/build/hdf5/1.8.18/lib -Wl,-rpath=$(INSDIR)/siesta/siesta-4.1-b3/Docs/build/hdf5/1.8.18/lib
+#LDFLAGS += -L$(INSDIR)/siesta/siesta-4.1-b3/Docs/build/netcdf/4.4.1.1/lib -Wl,-rpath=$(INSDIR)/siesta/siesta-4.1-b3/Docs/build/netcdf/4.4.1.1/lib
+#LIBS += -lnetcdff -lnetcdf -lhdf5_hl -lhdf5 -lz
+#COMP_LIBS += libncdf.a libfdict.a
+#FPPFLAGS += -DCDF -DNCDF -DNCDF_4
 
 # openblas
 LDFLAGS += -L$(INSDIR)/openblas/lib -Wl,-rpath=$(INSDIR)/openblas/lib
