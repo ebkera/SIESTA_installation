@@ -51,14 +51,13 @@ FPPFLAGS = $(DEFS_PREFIX)-DFC_HAVE_ABORT
 FPPFLAGS += -DMPI
 
 # flook
-INCFLAGS += -I$(INSDIR)/siesta/siesta-4.1-b3/Docs/build/flook/0.7.0/include
-LDFLAGS += -L$(INSDIR)/siesta/siesta-4.1-b3/Docs/build/flook/0.7.0/lib -Wl,-rpath=$(INSDIR)/siesta/siesta-4.1-b3/Docs/build/flook/0.7.0/lib
+INCFLAGS += -I/opt/siesta/siesta-master/Docs/build/flook/0.8.1/include
+LDFLAGS += -L/opt/siesta/siesta-master/Docs/build/flook/0.8.1/lib -Wl,-rpath=/opt/siesta/siesta-master/Docs/build/flook/0.8.1/lib
 LIBS += -lflookall -ldl
 COMP_LIBS += libfdict.a
 FPPFLAGS += -DSIESTA__FLOOK
 
 # netcdf
-
 # INCFLAGS += -I/opt/siesta/siesta-master/Docs/build/include
 # LDFLAGS += -L/opt/siesta/siesta-master/Docs/build/lib -Wl,-rpath,/opt/siesta/siesta-master/Docs/build/lib
 # LIBS += -lnetcdff -lnetcdf -lhdf5_hl -lhdf5 -lz
