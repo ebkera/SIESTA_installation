@@ -11,6 +11,7 @@
 # arch.make
 # or make a sym-link.
 # For an explanation of the flags see DOCUMENTED-TEMPLATE.make
+# Edited Eranjan
 
 .SUFFIXES:
 .SUFFIXES: .f .F .o .c .a .f90 .F90
