@@ -146,6 +146,7 @@ tar xzf ./siesta-master.tar.gz && rm ./siesta-master.tar.gz
 
 cd $SIESTA_DIR/siesta-master/Docs
 wget -O flook-0.8.1.tar.gz https://github.com/ElectronicStructureLibrary/flook/archive/v0.8.1.tar.gz
+wget -O install_flook.bash https://raw.githubusercontent.com/ebkera/SIESTA_installation/master/install_flook.bash
 (./install_flook.bash 2>&1) | tee install_flook.log
 # Slight error here
 # did not work with the latest install_flook.bash script had to copy over from the old script and repalced teh version number.
@@ -175,6 +176,7 @@ wget https://zlib.net/zlib-1.2.11.tar.gz
 wget https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.12/hdf5-1.12.0/src/hdf5-1.12.0.tar.bz2
 wget -O netcdf-c-4.7.4.tar.gz https://github.com/Unidata/netcdf-c/archive/v4.7.4.tar.gz
 wget -O netcdf-fortran-4.5.3.tar.gz https://github.com/Unidata/netcdf-fortran/archive/v4.5.3.tar.gz
+wget -O install_netcdf4.bash https://raw.githubusercontent.com/ebkera/SIESTA_installation/master/install_netcdf4.bash
 (./install_netcdf4.bash 2>&1) | tee install_netcdf4.log
 
 # got his for sucsessfull install ######
