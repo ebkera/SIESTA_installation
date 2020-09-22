@@ -136,6 +136,8 @@ cd ./scalapack_installer
 
 cd $SIESTA_DIR
 wget -O siesta-master.tar.gz https://launchpad.net/siesta/4.1/4.1-b4/+download/siesta-4.1-b4.tar.gz
+cp -r siesta-4.1-b4/ siesta-master
+
 # wget https://gitlab.com/siesta-project/siesta/-/archive/master/siesta-master.tar.gz   # This is for the gitlab version
 tar xzf ./siesta-master.tar.gz && rm ./siesta-master.tar.gz
 
