@@ -250,7 +250,7 @@ wget -O install_netcdf4.bash https://raw.githubusercontent.com/ebkera/SIESTA_ins
 cd $SIESTA_DIR/siesta-master/Obj
 wget -O arch.make https://raw.githubusercontent.com/ebkera/SIESTA_installation/master/arch.make
 # This is from the original file
-wget -O arch.make https://raw.githubusercontent.com/bgeneto/siesta-gcc-mpi/master/gcc-mpi-arch.make
+# wget -O arch.make https://raw.githubusercontent.com/bgeneto/siesta-gcc-mpi/master/gcc-mpi-arch.make
 
 # Now replace the above additions to the arch.make file into the newly downloaded arch.make file.
 
