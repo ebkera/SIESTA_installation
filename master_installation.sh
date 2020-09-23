@@ -159,12 +159,22 @@ wget -O install_flook.bash https://raw.githubusercontent.com/ebkera/SIESTA_insta
 
 
 # Please add the following to the BOTTOM of your arch.make file
-
+# I got this once but done use this
 # INCFLAGS += -I/opt/siesta/siesta-master/Docs/build/flook/0.8.1/include
 # LDFLAGS += -L/opt/siesta/siesta-master/Docs/build/flook/0.8.1/lib -Wl,-rpath=/opt/siesta/siesta-master/Docs/build/flook/0.8.1/lib
 # LIBS += -lflookall -ldl
 # COMP_LIBS += libfdict.a
 # FPPFLAGS += -DSIESTA__FLOOK
+
+# Use this version. THis is the version that is in the make file so dont have to do anything.
+#INCFLAGS += -I/opt/siesta/siesta-master/Docs/build/netcdf/4.7.4/include
+#LDFLAGS += -L/opt/siesta/siesta-master/Docs/build/zlib/1.2.11/lib -Wl,-rpath=/opt/siesta/siesta-master/Docs/build/zlib/1.2.11/lib
+#LDFLAGS += -L/opt/siesta/siesta-master/Docs/build/hdf5/1.12.0/lib -Wl,-rpath=/opt/siesta/siesta-master/Docs/build/hdf5/1.12.0/lib
+#LDFLAGS += -L/opt/siesta/siesta-master/Docs/build/netcdf/4.7.4/lib -Wl,-rpath=/opt/siesta/siesta-master/Docs/build/netcdf/4.7.4/lib
+#LIBS += -lnetcdff -lnetcdf -lhdf5_hl -lhdf5 -lz
+#COMP_LIBS += libncdf.a libfdict.a
+#FPPFLAGS += -DCDF -DNCDF -DNCDF_4
+
 ## end
 
 
