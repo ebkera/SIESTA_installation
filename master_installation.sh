@@ -104,12 +104,13 @@ tar xf ./scalapack_installer.tgz
 mkdir -p $SCALAPACK_DIR/scalapack_installer/build/download/
 wget https://github.com/Reference-ScaLAPACK/scalapack/archive/v2.1.0.tar.gz -O $SCALAPACK_DIR/scalapack_installer/build/download/scalapack.tgz
 cd ./scalapack_installer
-#Before mnoving on open file setup.py in teh scalapack_installer folder and change interpreter to python2 (have to have it installed)
+#Before moving on I have renamed the python interpreter to be #!/usr/bin/python2 since in ubuntu 20 focal fosssa we have python2 is python2 and not python
+wget -O setup.py https://raw.githubusercontent.com/ebkera/SIESTA_installation/master/setup.py
 ./setup.py --prefix $SCALAPACK_DIR --blaslib=$OPENBLAS_DIR/lib/libopenblas_nonthreaded.a \
   --lapacklib=$OPENBLAS_DIR/lib/libopenblas_nonthreaded.a --mpibindir=/usr/bin --mpiincdir=$mpiincdir
 #Note: Answer 'b' if asked: 'Which BLAS library do you want to use ?'
 
-# # if properly done you should get somehign like this  ### start
+# # if properly done you should get something like this  ### start
 # ScaLAPACK installation completed.
 
 
@@ -165,15 +166,6 @@ wget -O install_flook.bash https://raw.githubusercontent.com/ebkera/SIESTA_insta
 # LIBS += -lflookall -ldl
 # COMP_LIBS += libfdict.a
 # FPPFLAGS += -DSIESTA__FLOOK
-
-# Use this version. THis is the version that is in the make file so dont have to do anything.
-#INCFLAGS += -I/opt/siesta/siesta-master/Docs/build/netcdf/4.7.4/include
-#LDFLAGS += -L/opt/siesta/siesta-master/Docs/build/zlib/1.2.11/lib -Wl,-rpath=/opt/siesta/siesta-master/Docs/build/zlib/1.2.11/lib
-#LDFLAGS += -L/opt/siesta/siesta-master/Docs/build/hdf5/1.12.0/lib -Wl,-rpath=/opt/siesta/siesta-master/Docs/build/hdf5/1.12.0/lib
-#LDFLAGS += -L/opt/siesta/siesta-master/Docs/build/netcdf/4.7.4/lib -Wl,-rpath=/opt/siesta/siesta-master/Docs/build/netcdf/4.7.4/lib
-#LIBS += -lnetcdff -lnetcdf -lhdf5_hl -lhdf5 -lz
-#COMP_LIBS += libncdf.a libfdict.a
-#FPPFLAGS += -DCDF -DNCDF -DNCDF_4
 
 ## end
 
@@ -239,6 +231,17 @@ wget -O install_netcdf4.bash https://raw.githubusercontent.com/ebkera/SIESTA_ins
 # LIBS += -lnetcdff -lnetcdf -lhdf5_hl -lhdf5 -lz
 # COMP_LIBS += libncdf.a libfdict.a
 # FPPFLAGS += -DCDF -DNCDF -DNCDF_4
+
+
+
+# Use this version. THis is the version that is in the make file so dont have to do anything.
+#INCFLAGS += -I/opt/siesta/siesta-master/Docs/build/netcdf/4.7.4/include
+#LDFLAGS += -L/opt/siesta/siesta-master/Docs/build/zlib/1.2.11/lib -Wl,-rpath=/opt/siesta/siesta-master/Docs/build/zlib/1.2.11/lib
+#LDFLAGS += -L/opt/siesta/siesta-master/Docs/build/hdf5/1.12.0/lib -Wl,-rpath=/opt/siesta/siesta-master/Docs/build/hdf5/1.12.0/lib
+#LDFLAGS += -L/opt/siesta/siesta-master/Docs/build/netcdf/4.7.4/lib -Wl,-rpath=/opt/siesta/siesta-master/Docs/build/netcdf/4.7.4/lib
+#LIBS += -lnetcdff -lnetcdf -lhdf5_hl -lhdf5 -lz
+#COMP_LIBS += libncdf.a libfdict.a
+#FPPFLAGS += -DCDF -DNCDF -DNCDF_4
 ## end
 
 #If anything goes wrong in this step you can check the install_netcdf4.log log file.
