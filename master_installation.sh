@@ -136,10 +136,9 @@ cd ./scalapack_installer
 
 cd $SIESTA_DIR
 wget -O siesta-master.tar.gz https://launchpad.net/siesta/4.1/4.1-b4/+download/siesta-4.1-b4.tar.gz
-cp -r siesta-4.1-b4/ siesta-master
-
-# wget https://gitlab.com/siesta-project/siesta/-/archive/master/siesta-master.tar.gz   # This is for the gitlab version
+# wget https://gitlab.com/siesta-project/siesta/-/archive/master/siesta-master.tar.gz   # This is for the gitlab version under development
 tar xzf ./siesta-master.tar.gz && rm ./siesta-master.tar.gz
+cp -r siesta-4.1-b4/ siesta-master
 
 #4.1. Install siesta library dependencies from source
 #Install the fortran-lua-hook library (flook):
@@ -239,6 +238,8 @@ wget -O install_netcdf4.bash https://raw.githubusercontent.com/ebkera/SIESTA_ins
 
 
 cd $SIESTA_DIR/siesta-master/Obj
+wget -O arch.make https://raw.githubusercontent.com/ebkera/SIESTA_installation/master/arch.make
+# This is from the original file
 wget -O arch.make https://raw.githubusercontent.com/bgeneto/siesta-gcc-mpi/master/gcc-mpi-arch.make
 
 # Now replace the above additions to the arch.make file into the newly downloaded arch.make file.
