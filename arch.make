@@ -1,4 +1,4 @@
-#
+# Link to original file : https://raw.githubusercontent.com/bgeneto/siesta-gcc-mpi/master/gcc-mpi-arch.make
 # Copyright (C) 1996-2016 The SIESTA group
 #  This file is distributed under the terms of the
 #  GNU General Public License: see COPYING in the top directory
