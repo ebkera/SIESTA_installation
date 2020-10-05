@@ -252,6 +252,8 @@ wget -O install_netcdf4.bash https://raw.githubusercontent.com/ebkera/SIESTA_ins
 
 cd $SIESTA_DIR/siesta-master/Obj
 wget -O arch.make https://raw.githubusercontent.com/ebkera/SIESTA_installation/master/arch.make
+# For openMP this is the link that we should use:
+wget -O arch.make https://raw.githubusercontent.com/ebkera/SIESTA_installation/master/gcc-openmp-arch.make
 # This is from the original file
 # wget -O arch.make https://raw.githubusercontent.com/bgeneto/siesta-gcc-mpi/master/gcc-mpi-arch.make
 
