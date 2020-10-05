@@ -16,7 +16,7 @@
 .SUFFIXES:
 .SUFFIXES: .f .F .o .c .a .f90 .F90
 
-SIESTA_ARCH = x86_64_MPI_eranjan_v0
+SIESTA_ARCH = x86_64_MPI_Eranjan_v0 Compiled On: ERA_PC ERA_CARBON ERA_FFL0 ERA_FFL1 ERA_FFL2
 
 INSDIR = /opt
 
