@@ -64,14 +64,14 @@ make DYNAMIC_ARCH=0 CC=gcc FC=gfortran HOSTCC=gcc BINARY=64 INTERFACE=64 \
 make PREFIX=$OPENBLAS_DIR LIBNAMESUFFIX=nonthreaded install
 
 #Below is the installation for blas version 0.3.10 and for the parallel installation
-wget -O OpenBLAS.tar.gz https://github.com/xianyi/OpenBLAS/archive/v0.3.10.tar.gz
-tar xzf OpenBLAS.tar.gz && rm OpenBLAS.tar.gz
-cd OpenBLAS-0.3.10
-make DYNAMIC_ARCH=0 CC=gcc FC=gfortran HOSTCC=gcc BINARY=64 INTERFACE=64 \
-  NO_AFFINITY=1 NO_WARMUP=1 USE_OPENMP=0 USE_THREAD=0 USE_LOCKING=1 LIBNAMESUFFIX=nonthreaded
-make PREFIX=$OPENBLAS_DIR LIBNAMESUFFIX=nonthreaded install
+# wget -O OpenBLAS.tar.gz https://github.com/xianyi/OpenBLAS/archive/v0.3.10.tar.gz
+# tar xzf OpenBLAS.tar.gz && rm OpenBLAS.tar.gz
+# cd OpenBLAS-0.3.10
+# make DYNAMIC_ARCH=0 CC=gcc FC=gfortran HOSTCC=gcc BINARY=64 INTERFACE=64 \
+#   NO_AFFINITY=1 NO_WARMUP=1 USE_OPENMP=0 USE_THREAD=0 USE_LOCKING=1 LIBNAMESUFFIX=nonthreaded
+# make PREFIX=$OPENBLAS_DIR LIBNAMESUFFIX=nonthreaded install
 
-# if proerly done you should get somehign like this  ### start
+# if proerly done you should get somehing like this  ### start
 #make[1]: Leaving directory '/opt/openblas/OpenBLAS-0.3.10/exports'
 
 # OpenBLAS build complete. (BLAS CBLAS LAPACK LAPACKE)
