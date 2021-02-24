@@ -1,0 +1,145 @@
+This page for information on installing VASP 
+https://www.vasp.at/wiki/index.php/A_Ubuntu_based_installation_of_VASP
+
+Contents copied here:
+
+A Ubuntu based installation of VASP
+Jump to navigation
+Jump to search
+
+The following guide builds an OpenMPI version of VASP using the GNU compiler suite and the LAPACK, SCALAPACK and FFTW library provided by the internal package manager APT. This guide was tested successfully on Ubuntu (18.04). Note that following steps will yield a version of VASP without OpenMP support.
+
+    Open a terminal and make sure that all relevant GNU compilers are installed
+
+# apt-get install make build-essential g++ gfortran
+
+    The following command installs all necessary libraries for VASP, that is LAPACK, SCALAPACK, OpenMPI and FFTW
+
+# apt-get install libblas-dev liblapack-dev libopenmpi-dev libscalapack-mpi-dev libfftw3-dev
+
+    Extract the VASP tar ball
+
+tar -xzvf vasp.VERSION.tar.gz 
+cd vasp.VERSION
+
+    Create a file "makefile.include" with following content
+
+# Precompiler options
+CPP_OPTIONS= -DHOST=\"LinuxGNU\" \
+            -DMPI -DMPI_BLOCK=8000 -Duse_collective \
+            -DscaLAPACK -DCACHE_SIZE=4000 \
+            -Davoidalloc -Duse_bse_te \
+            -Dtbdyn
+
+CPP        = gcc -E -P -C -w $*$(FUFFIX) >$*$(SUFFIX) $(CPP_OPTIONS)
+
+FC         = mpif90
+FCL        = mpif90 
+
+FREE       = -ffree-form -ffree-line-length-none 
+
+FFLAGS     = -w
+OFLAG      = -O2 -mtune=native -m64
+OFLAG_IN   = $(OFLAG)
+DEBUG      = -O0
+
+LIBDIR     = /usr/lib/x86_64-linux-gnu
+BLAS       = -L$(LIBDIR) -lblas
+LAPACK     = -L$(LIBDIR) -llapack
+BLACS      = 
+SCALAPACK  = -L/usr/lib -lscalapack-openmpi $(BLACS)
+
+LLIBS      = $(SCALAPACK) $(LAPACK) $(BLAS)
+
+LLIBS      += -lfftw3
+INCS       = -I/usr/include
+
+OBJECTS    = fftmpiw.o fftmpi_map.o  fftw3d.o  fft3dlib.o 
+
+OBJECTS_O1 += fftw3d.o fftmpi.o fftmpiw.o
+OBJECTS_O2 += fft3dlib.o
+
+# For what used to be vasp.5.lib
+CPP_LIB    = $(CPP)
+FC_LIB     = $(FC)
+CC_LIB     = gcc
+CFLAGS_LIB = -O
+FFLAGS_LIB = -O1
+FREE_LIB   = $(FREE)
+
+OBJECTS_LIB= linpack_double.o getshmem.o 
+
+# For the parser library
+CXX_PARS   = g++  
+LIBS       += parser
+LLIBS      += -Lparser -lparser -lstdc++
+
+# Normally no need to change this
+SRCDIR     = ../../src
+BINDIR     = ../../bin
+
+    Build std, gam and ncl versions of VASP
+
+make std gam ncl
+
+After a successful build the corresponding executables are found in ./bin
+Linking to MKL
+
+Alternatively one can use Intel's Math Kernel Library (MKL) [1].
+
+# Precompiler options
+CPP_OPTIONS= -DHOST=\"LinuxGNU\" \
+           -DMPI -DMPI_BLOCK=8000 -Duse_collective \
+           -DscaLAPACK -DCACHE_SIZE=4000 \
+           -Davoidalloc -Duse_bse_te \
+           -Dtbdyn
+
+CPP        = gcc -E -P -C -w $*$(FUFFIX) >$*$(SUFFIX) $(CPP_OPTIONS) 
+
+FC         = mpif90 -m64 -I$(MKLROOT)/include
+FCL        = mpif90 -m64 -I$(MKLROOT)/include
+
+FREE       = -ffree-form -ffree-line-length-none  
+
+FFLAGS     = -w
+OFLAG      = -O2 -mtune=native -m64
+OFLAG_IN   = $(OFLAG)
+DEBUG      = -O0
+
+LIBDIR     = /usr/lib/x86_64-linux-gnu
+BLAS       = 
+LAPACK     = 
+BLACS      = 
+SCALAPACK  = -L/usr/lib -lscalapack-openmpi $(BLACS)
+
+LLIBS      = $(SCALAPACK) $(LAPACK) $(BLAS)
+
+LLIBS      += -L$(MKLROOT)/lib/intel64 -Wl,--no-as-needed -lmkl_gf_lp64 -lmkl_sequential -lmkl_core -lpthread -lm -ldl
+
+INCS       = -I$(MKLROOT)/include/fftw
+
+OBJECTS    = fftmpiw.o fftmpi_map.o  fftw3d.o  fft3dlib.o  
+
+OBJECTS_O1 += fftw3d.o fftmpi.o fftmpiw.o
+OBJECTS_O2 += fft3dlib.o
+
+# For what used to be vasp.5.lib 
+CPP_LIB    = $(CPP)
+FC_LIB     = $(FC)
+CC_LIB     = gcc
+CFLAGS_LIB = -O
+FFLAGS_LIB = -O1
+FREE_LIB   = $(FREE) 
+
+OBJECTS_LIB= linpack_double.o getshmem.o 
+
+# For the parser library
+CXX_PARS   = g++  
+LIBS       += parser
+LLIBS      += -Lparser -lparser -lstdc++ 
+
+# Normally no need to change this
+SRCDIR     = ../../src
+BINDIR     = ../../bin
+
+This reduces the execution time on Intel machines by a factor of 2 to 3. 
