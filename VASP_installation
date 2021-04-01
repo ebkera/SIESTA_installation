@@ -1,7 +1,15 @@
 This page for information on installing VASP 
 https://www.vasp.at/wiki/index.php/A_Ubuntu_based_installation_of_VASP
+Also see 
+https://www.vasp.at/wiki/index.php/Makefile.include.linux_gnu
 
-Contents copied here:
+Contents copied here (the above two makefile.include files are copied and merged for my case):
+Also importantly for making SO work....
+The makefile inside src/ (src/makefile) was edited and removed all instances of -DNGZhalf and -DNGXhalf including the inner if else statements contaiing the flags.
+left below line alone since it is a filter-out:
+FPP=$(filter-out -DwNGZhalf -DNGZhalf -DwNGXhalf -DNGXhalf,$(CPP))
+
+
 
 A Ubuntu based installation of VASP
 Jump to navigation
@@ -24,12 +32,24 @@ cd vasp.VERSION
 
     Create a file "makefile.include" with following content
 
-# Precompiler options
+############################################################################## File to copy starts here ##########################################################
+
+# Precompiler options (Changed from original)
 CPP_OPTIONS= -DHOST=\"LinuxGNU\" \
             -DMPI -DMPI_BLOCK=8000 -Duse_collective \
             -DscaLAPACK -DCACHE_SIZE=4000 \
             -Davoidalloc -Duse_bse_te \
             -Dtbdyn
+            
+CPP_OPTIONS= -DHOST=\"LinuxGNU\" \
+             -DMPI -DMPI_BLOCK=8000 -Duse_collective \
+             -DscaLAPACK \
+             -DCACHE_SIZE=4000 \
+             -Davoidalloc \
+             -Dvasp6 \
+             -Duse_bse_te \
+             -Dtbdyn \
+             -Dfock_dblbuf            
 
 CPP        = gcc -E -P -C -w $*$(FUFFIX) >$*$(SUFFIX) $(CPP_OPTIONS)
 
