@@ -112,6 +112,7 @@ mkdir -p $SCALAPACK_DIR/scalapack_installer/build/download/
 wget https://github.com/Reference-ScaLAPACK/scalapack/archive/v2.1.0.tar.gz -O $SCALAPACK_DIR/scalapack_installer/build/download/scalapack.tgz
 cd ./scalapack_installer
 #Before moving on I have renamed the python interpreter to be #!/usr/bin/python2 since in ubuntu 20 focal fosssa we have python2 is python2 and not python
+also open the scalapck_installer/
 wget -O setup.py https://raw.githubusercontent.com/ebkera/SIESTA_installation/master/setup.py
 ./setup.py --prefix $SCALAPACK_DIR --blaslib=$OPENBLAS_DIR/lib/libopenblas_nonthreaded.a \
   --lapacklib=$OPENBLAS_DIR/lib/libopenblas_nonthreaded.a --mpibindir=/usr/bin --mpiincdir=$mpiincdir
@@ -143,7 +144,7 @@ wget -O setup.py https://raw.githubusercontent.com/ebkera/SIESTA_installation/ma
 #4. Install siesta from source
 
 cd $SIESTA_DIR
-wget -O siesta-master.tar.gz https://launchpad.net/siesta/4.1/4.1-b4/+download/siesta-4.1-b4.tar.gz
+wget -O siesta-master.tar.gz https://gitlab.com/siesta-project/siesta/-/package_files/6659062/download
 # wget https://gitlab.com/siesta-project/siesta/-/archive/master/siesta-master.tar.gz   # This is for the gitlab version under development
 tar xzf ./siesta-master.tar.gz && rm ./siesta-master.tar.gz
 cp -r siesta-4.1-b4/ siesta-master
@@ -152,8 +153,8 @@ cp -r siesta-4.1-b4/ siesta-master
 #Install the fortran-lua-hook library (flook):
 
 cd $SIESTA_DIR/siesta-master/Docs
-wget -O flook-0.8.1.tar.gz https://github.com/ElectronicStructureLibrary/flook/archive/v0.8.1.tar.gz
-wget -O install_flook.bash https://raw.githubusercontent.com/ebkera/SIESTA_installation/master/install_flook.bash
+# wget -O flook-0.8.1.tar.gz https://github.com/ElectronicStructureLibrary/flook/archive/v0.8.1.tar.gz
+# wget -O install_flook.bash https://raw.githubusercontent.com/ebkera/SIESTA_installation/master/install_flook.bash
 (./install_flook.bash 2>&1) | tee install_flook.log
 # Slight error here
 # did not work with the latest install_flook.bash script had to copy over from the old script and repalced teh version number.
@@ -180,11 +181,11 @@ wget -O install_flook.bash https://raw.githubusercontent.com/ebkera/SIESTA_insta
 #Install netcdf dependency (required and slow, grab a coffee):
 
 cd $SIESTA_DIR/siesta-master/Docs
-wget https://zlib.net/zlib-1.2.11.tar.gz
-wget https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.12/hdf5-1.12.0/src/hdf5-1.12.0.tar.bz2
-wget -O netcdf-c-4.7.4.tar.gz https://github.com/Unidata/netcdf-c/archive/v4.7.4.tar.gz
-wget -O netcdf-fortran-4.5.3.tar.gz https://github.com/Unidata/netcdf-fortran/archive/v4.5.3.tar.gz
-wget -O install_netcdf4.bash https://raw.githubusercontent.com/ebkera/SIESTA_installation/master/install_netcdf4.bash
+# wget https://zlib.net/zlib-1.2.11.tar.gz
+# wget https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.12/hdf5-1.12.0/src/hdf5-1.12.0.tar.bz2
+# wget -O netcdf-c-4.7.4.tar.gz https://github.com/Unidata/netcdf-c/archive/v4.7.4.tar.gz
+# wget -O netcdf-fortran-4.5.3.tar.gz https://github.com/Unidata/netcdf-fortran/archive/v4.5.3.tar.gz
+#wget -O install_netcdf4.bash https://raw.githubusercontent.com/ebkera/SIESTA_installation/master/install_netcdf4.bash
 (./install_netcdf4.bash 2>&1) | tee install_netcdf4.log
 
 # got his for sucsessfull install ######
