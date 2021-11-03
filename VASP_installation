@@ -54,6 +54,7 @@ CPP_OPTIONS= -DHOST=\"LinuxGNU\" \
 CPP        = gcc -E -P -C -w $*$(FUFFIX) >$*$(SUFFIX) $(CPP_OPTIONS)
 
 FC         = mpif90
+# FC         = mpif90 -fallow-argument-mismatch # For AMD processors use this -fallow-argument-mismatch flag
 FCL        = mpif90 
 
 FREE       = -ffree-form -ffree-line-length-none 
