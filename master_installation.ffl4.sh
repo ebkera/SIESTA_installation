@@ -111,8 +111,8 @@ tar xf ./scalapack_installer.tgz
 mkdir -p $SCALAPACK_DIR/scalapack_installer/build/download/
 wget https://github.com/Reference-ScaLAPACK/scalapack/archive/v2.1.0.tar.gz -O $SCALAPACK_DIR/scalapack_installer/build/download/scalapack.tgz
 cd ./scalapack_installer
-#Before moving on I have renamed the python interpreter to be #!/usr/bin/python2 since in ubuntu 20 focal fosssa we have python2 is python2 and not python
-also open the scalapck_installer/
+# Before moving on I have renamed the python interpreter to be #!/usr/bin/python2 since in ubuntu 20 focal fosssa we have python2 is python2 and not python
+# Also open the scalapck_installer and repace relevant file with the scalapack.py file in the repo after running it one time to generate the file structure.
 wget -O setup.py https://raw.githubusercontent.com/ebkera/SIESTA_installation/master/setup.py
 ./setup.py --prefix $SCALAPACK_DIR --blaslib=$OPENBLAS_DIR/lib/libopenblas_nonthreaded.a \
   --lapacklib=$OPENBLAS_DIR/lib/libopenblas_nonthreaded.a --mpibindir=/usr/bin --mpiincdir=$mpiincdir
